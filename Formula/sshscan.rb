@@ -3,8 +3,8 @@ class Sshscan < Formula
 
   desc "SSH algorithm security scanner for auditing and compliance checking"
   homepage "https://github.com/rtulke/sshscan"
-  url "https://github.com/rtulke/sshscan/archive/refs/tags/v3.5.0.tar.gz"
-  sha256 "4ff7ba9e81eb842be7d418d3a258e01d200085b85a37d18180df685b98a1147c"
+  url "https://github.com/rtulke/sshscan/archive/refs/tags/v3.6.1.tar.gz"
+  sha256 "3a885d5a200c849c4b2eaaa73e5ca511daf646f3dc0299f69e9fa8edd94bc9ea"
   license "MIT"
 
   head "https://github.com/rtulke/sshscan.git", branch: "main"
@@ -30,7 +30,7 @@ class Sshscan < Formula
   end
 
   test do
-    assert_match "3.5.0", shell_output("#{bin}/sshscan --version")
+    assert_match "3.6.1", shell_output("#{bin}/sshscan --version")
     assert_match "NIST", shell_output("#{bin}/sshscan --list-frameworks")
     assert_match "weak", shell_output("#{bin}/sshscan --list-filter")
   end
