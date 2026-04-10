@@ -1,4 +1,6 @@
 class Sshscan < Formula
+  include Language::Python::Virtualenv
+
   desc "SSH algorithm security scanner for auditing and compliance checking"
   homepage "https://github.com/rtulke/sshscan"
   url "https://github.com/rtulke/sshscan/archive/refs/tags/v3.5.0.tar.gz"
@@ -8,14 +10,21 @@ class Sshscan < Formula
   head "https://github.com/rtulke/sshscan.git", branch: "main"
 
   depends_on "python@3.12"
-  depends_on "pyyaml"
+
+  resource "pyyaml" do
+    url "https://files.pythonhosted.org/packages/54/ed/79a089b6be93607fa5cdaedf301d7dfb23af5f25c398d5ead2525b063e17/pyyaml-6.0.2.tar.gz"
+    sha256 "d584d9ec91ad65861cc08d42e834324ef890a082e591037abe114850ff7bbc3e"
+  end
 
   def install
+    venv = virtualenv_create(libexec, "python@3.12")
+    venv.pip_install resource("pyyaml")
+
     libexec.install "sshscan.py"
 
     (bin/"sshscan").write <<~SHELL
       #!/bin/bash
-      exec "#{Formula["python@3.12"].opt_bin}/python3" "#{libexec}/sshscan.py" "$@"
+      exec "#{libexec}/bin/python3" "#{libexec}/sshscan.py" "$@"
     SHELL
     chmod 0755, bin/"sshscan"
   end
