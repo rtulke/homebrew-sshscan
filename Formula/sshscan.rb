@@ -17,7 +17,7 @@ class Sshscan < Formula
   end
 
   def install
-    venv = virtualenv_create(libexec, "python@3.12")
+    venv = virtualenv_create(libexec, "python3")
     venv.pip_install resource("pyyaml")
 
     libexec.install "sshscan.py"
