@@ -4,7 +4,7 @@ class Sshscan < Formula
   desc "SSH algorithm security scanner for auditing and compliance checking"
   homepage "https://github.com/rtulke/sshscan"
   url "https://github.com/rtulke/sshscan/archive/refs/tags/v3.7.1.tar.gz"
-  sha256 "8673b31939f309776f7e3959b077074614d16721d304511ce21c65b6e72774c1"
+  sha256 "9c389291b39da563fca879e30a6c4de6649f9245c3cb5f70427ac7ca38341a5d"
   license "MIT"
 
   head "https://github.com/rtulke/sshscan.git", branch: "main"
